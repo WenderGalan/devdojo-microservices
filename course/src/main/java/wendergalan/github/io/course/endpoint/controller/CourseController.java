@@ -10,8 +10,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import wendergalan.github.io.core.model.Course;
 import wendergalan.github.io.course.endpoint.service.CourseService;
-import wendergalan.github.io.course.model.Course;
 
 @RestController
 @RequestMapping("v1/admin/course")

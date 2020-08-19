@@ -1,4 +1,4 @@
-package wendergalan.github.io.course.model;
+package wendergalan.github.io.core.model;
 
 import java.io.Serializable;
 

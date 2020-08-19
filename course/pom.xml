@@ -14,11 +14,16 @@
     <name>course</name>
     <description>Spring Boot Micro-services By Wender Galan</description>
 
-<!--    <properties>-->
-<!--        <java.version>11</java.version>-->
-<!--    </properties>-->
+    <properties>
+        <java.version>11</java.version>
+    </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>wendergalan.github.io</groupId>
+            <artifactId>core</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
     </dependencies>
 
     <build>
