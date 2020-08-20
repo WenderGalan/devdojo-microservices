@@ -1,13 +1,22 @@
 package wendergalan.github.io.auth;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.test.context.junit4.SpringRunner;
 
+@RunWith(SpringRunner.class)
 @SpringBootTest
-class AuthApplicationTests {
+public class AuthApplicationTests {
 
     @Test
-    void contextLoads() {
+    public void contextLoads() {
     }
 
+    @Test
+    public void test() {
+        System.out.println(new BCryptPasswordEncoder().encode("devdojo"));
+        // $2a$10$8hq3f/rLOgnk43v55RuxQ.JJqyFYS9OtwZmUr76TAmMNOqUXfKZrm
+    }
 }
