@@ -7,28 +7,37 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import wendergalan.github.io.auth.security.filter.JwtUsernameAndPasswordAuthenticationFilter;
 import wendergalan.github.io.core.property.JwtConfiguration;
 import wendergalan.github.io.security.config.SecurityTokenConfig;
+import wendergalan.github.io.security.filter.JwtTokenAuthotizationFilter;
 import wendergalan.github.io.security.token.creator.TokenCreator;
+import wendergalan.github.io.security.token.creator.converter.TokenConverter;
 
 @EnableWebSecurity
 public class SecurityCredentialsConfig extends SecurityTokenConfig {
 
     private final UserDetailsService userDetailsService;
     private final TokenCreator tokenCreator;
+    private final TokenConverter tokenConverter;
 
     public SecurityCredentialsConfig(JwtConfiguration jwtConfiguration,
                                      @Qualifier("userDetailsServiceImpl") UserDetailsService userDetailsService,
-                                     TokenCreator tokenCreator) {
+                                     TokenCreator tokenCreator,
+                                     TokenConverter tokenConverter) {
         super(jwtConfiguration);
         this.userDetailsService = userDetailsService;
         this.tokenCreator = tokenCreator;
+        this.tokenConverter = tokenConverter;
+
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.addFilter(new JwtUsernameAndPasswordAuthenticationFilter(authenticationManager(), jwtConfiguration, tokenCreator));
+        http
+                .addFilter(new JwtUsernameAndPasswordAuthenticationFilter(authenticationManager(), jwtConfiguration, tokenCreator))
+                .addFilterAfter(new JwtTokenAuthotizationFilter(jwtConfiguration, tokenConverter), UsernamePasswordAuthenticationFilter.class);
         super.configure(http);
     }
 
