@@ -1,6 +1,6 @@
 # devdojo-microservices
 
-Projeto referente ao curso do canal [DEVDOJO]((https://www.youtube.com/watch?v=vxeMnM15gsI&list=PL62G310vn6nH_iMQoPMhIlK_ey1npyUUl&index=1)) do youtube.
+Projeto referente ao curso do canal [DEVDOJO](https://www.youtube.com/watch?v=vxeMnM15gsI&list=PL62G310vn6nH_iMQoPMhIlK_ey1npyUUl&index=1) do youtube.
 
 O código está todo comentado para tentar sanar eventuais dúvidas sobre.
 
