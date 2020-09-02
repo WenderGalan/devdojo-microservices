@@ -1,5 +1,6 @@
 package wendergalan.github.io.core.model;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.*;
 
 import javax.persistence.Column;
@@ -17,6 +18,7 @@ import static javax.persistence.GenerationType.IDENTITY;
 @NoArgsConstructor
 @ToString
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class ApplicationUser implements AbstractEntity {
 
     @Id
@@ -35,6 +37,7 @@ public class ApplicationUser implements AbstractEntity {
 
     @NotNull(message = "The field role is mandatory")
     @Column(nullable = false)
+    @Builder.Default
     private String role = "USER";
 
     public ApplicationUser(ApplicationUser applicationUser) {
